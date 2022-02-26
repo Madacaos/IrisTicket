@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.UUID;
 
-public class LOCAL{
+public class LOCAL {
     private YamlConfiguration localDatabase;
     private File fileLocalDatabase;
     private Date date;
@@ -57,8 +57,8 @@ public class LOCAL{
 
         newCommentIDs.add(CommentID);
 
-        if(localDatabase.getList("comments.idList") != null) {
-            newCommentIDs.addAll((ArrayList<Integer>) localDatabase.getList("comments.idList"));
+        if(localDatabase.getList("tickets.comments.idList") != null) {
+            newCommentIDs.addAll((ArrayList<Integer>) localDatabase.getList("tickets.comments.idList"));
         }
 
         localDatabase.set("comments.idList",newCommentIDs);
@@ -80,6 +80,35 @@ public class LOCAL{
             e.printStackTrace();
         }
     }
+
+    public int createComment(UUID player, String comment, String date, int ticketID){
+
+
+        //UPDATE COMMENTS ID LIST
+        ArrayList<Integer> newCommentIDs = new ArrayList<Integer>();
+        int commentID = getLastLocalCommentID()+1;
+        newCommentIDs.add(commentID);
+        if(localDatabase.getList("tickets.comments.idList") != null) {
+            newCommentIDs.addAll((ArrayList<Integer>) localDatabase.getList("comments.idList"));
+        }
+
+        //UPDATE TICKET COMMENT IDS LIST
+        ArrayList<Integer> newTicketCommentIDs = new ArrayList<Integer>();
+        newCommentIDs.add(commentID);
+        if(localDatabase.getList("tickets.") != null) {
+            newCommentIDs.addAll((ArrayList<Integer>) localDatabase.getList("tickets.ticketList."+ticketID+".comments"));
+        }
+        localDatabase.set("tickets.ticketList."+ticketID+".comments",newCommentIDs);
+
+        try {
+            localDatabase.save(fileLocalDatabase);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return commentID;
+    }
+
 
     public int getLastLocalTicketID(){
         verify();

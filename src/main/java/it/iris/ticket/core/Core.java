@@ -12,6 +12,7 @@ public final class Core extends JavaPlugin {
         data.setTime(System.currentTimeMillis());
 
         local.createLocalTicket(UUID.fromString("737c890e-9702-11ec-b909-0242ac120002"),"Ciccio super detective con gli occhiali",type.format(data),"Generale");
+        local.createComment(UUID.fromString("737c890e-9702-11ec-b909-0242ac120002"),"questo è il secondo commento",type.format(data),1);
     }
 
     @Override
