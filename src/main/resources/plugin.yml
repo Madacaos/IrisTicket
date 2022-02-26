@@ -1,0 +1,5 @@
+name: IrisTicket
+version: '${project.version}'
+main: it.iris.ticket.core.Core
+authors: [ autori ]
+description: descrizione
