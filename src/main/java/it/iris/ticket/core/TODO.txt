@@ -1,0 +1,60 @@
+config:
+    database:
+        MYSQL:
+            enable: true/false (if false, use local database [database.yml])
+            host...ecc.
+
+
+Classes:
+    MainDatabase:
+        functions:
+            - (UUID player, String firstComment, Date date, String category) createTicket (Integer)
+
+            - (UUID player, String comment) commentTicket (Integer)
+            - (Integer ticketID) removeCommentTicket (Void)
+
+            - closeTicket
+            - stateTicket (Boolean state)
+
+            - deleteTicket (Void)
+
+            - blockPlayer (Void)
+            - getBlockedPlayers (UUID arraylist)
+
+            - reviewTicket
+            - getReviewTicket (Integer)
+
+            - changeCategoryTicket
+            - getCategoryTicket
+
+
+           ticketList:
+                - 1
+                - 2
+                - 3
+                - 4
+
+           tickets:
+                1:
+                    author: MIO UUID BELLISSIMO
+                    opened: true
+                    category: general
+                    date: 27/04/2006 12:00
+                    tkcomments:
+                        - 20
+                        - 21
+                        - 22
+
+
+
+           commentsList:
+                - 1
+                - 20
+                - 21
+                - 22
+           comments:
+                20:
+                    author: MIO UUID BELLISSIMO
+                    date: 27/04/2006 12:30
+                    ticketID: 1
+                    comment: Ciao mi sono super perso aiutatemi
