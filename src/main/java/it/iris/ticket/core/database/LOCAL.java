@@ -72,7 +72,9 @@ public class LOCAL {
         localDatabase.set("tickets.ticketList."+TicketID+".author",player.toString());
         localDatabase.set("tickets.ticketList."+TicketID+".category",category);
         localDatabase.set("tickets.ticketList."+TicketID+".date", date.toString());
-        localDatabase.set("tickets.ticketList."+TicketID+".comments",new ArrayList<Integer>().add(CommentID));
+        ArrayList<Integer> ar = new ArrayList<Integer>();
+        ar.add(CommentID);
+        localDatabase.set("tickets.ticketList."+TicketID+".comments",ar);
 
         try {
             localDatabase.save(fileLocalDatabase);
@@ -88,17 +90,23 @@ public class LOCAL {
         ArrayList<Integer> newCommentIDs = new ArrayList<Integer>();
         int commentID = getLastLocalCommentID()+1;
         newCommentIDs.add(commentID);
-        if(localDatabase.getList("tickets.comments.idList") != null) {
+        if(localDatabase.getList("comments.idList") != null) {
             newCommentIDs.addAll((ArrayList<Integer>) localDatabase.getList("comments.idList"));
         }
+        localDatabase.set("comments.idList",newCommentIDs);
+
 
         //UPDATE TICKET COMMENT IDS LIST
         ArrayList<Integer> newTicketCommentIDs = new ArrayList<Integer>();
-        newCommentIDs.add(commentID);
-        if(localDatabase.getList("tickets.") != null) {
-            newCommentIDs.addAll((ArrayList<Integer>) localDatabase.getList("tickets.ticketList."+ticketID+".comments"));
+        newTicketCommentIDs.add(commentID);
+        if(localDatabase.getList("tickets.ticketList."+ticketID+".comments") != null) {
+            newTicketCommentIDs.addAll((ArrayList<Integer>) localDatabase.getList("tickets.ticketList."+ticketID+".comments"));
         }
-        localDatabase.set("tickets.ticketList."+ticketID+".comments",newCommentIDs);
+        localDatabase.set("tickets.ticketList."+ticketID+".comments",newTicketCommentIDs);
+
+        localDatabase.set("comments.commentsList."+commentID+".author",player.toString());
+        localDatabase.set("comments.commentsList."+commentID+".comment",comment);
+        localDatabase.set("comments.commentsList."+commentID+".comment",date);
 
         try {
             localDatabase.save(fileLocalDatabase);
