@@ -1,0 +1,32 @@
+#                                        #
+#               IrisTicket               #
+#                                        #
+
+database:
+  useMYSQL: false     # Type false to use local database (database.db) or Type true to use MYSQL database
+  MYSQL:              # I recommend using mysql in BungeeCord MultiServer
+    url: 'jdbc:mysql://...'
+    port: 3306
+    username: 'root'
+    password: 'passwd'
+    database: 'IrisTicket'
+
+permissions:
+  admin:
+    ticket-all-list: IrisTicket.admin
+    ticket-all-view: IrisTicket.admin
+    ticket-all-comment: IrisTicket.admin
+    ticket-all-close: IrisTicket.admin
+  user:
+    ticket-create: null       # Type 'null' if the user does not need to have
+    ticket-his-view: null     # permissions to use the function
+    ticket-his-list: null
+    ticket-his-comment: null
+    ticket-his-close: null
+
+telegram:
+  useTelegram: true
+  token: '2049667294:AAG6qudp4rsuAuDNZ0p4H624AIqY2hwdX4o'
+
+#configuration plugin
+#by Madacaos with heart <3
