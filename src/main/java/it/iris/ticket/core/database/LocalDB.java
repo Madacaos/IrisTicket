@@ -1,4 +1,4 @@
-package it.iris.ticket.core.Database;
+package it.iris.ticket.core.database;
 
 import it.iris.ticket.core.Core;
 import lombok.Getter;
