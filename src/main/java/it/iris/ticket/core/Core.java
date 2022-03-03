@@ -1,19 +1,17 @@
 package     it.iris.ticket.core;
 
+import it.iris.ticket.core.Commands.listener;
+import it.iris.ticket.core.database.IrisDatabase;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Core extends JavaPlugin {
     @Override
     public void onEnable() {
-        /*
-        Database database = new Database();
-        database.executeUpdate("CREATE TABLE IF NOT EXISTS PIPPO (CIAO VARCHAR(255))");
-        database.executeUpdate("INSERT INTO PIPPO (CIAO) VALUES ('provola')");
-        ArrayList<String> rows = new ArrayList<>();
-        rows.add("CIAO");
-        Bukkit.broadcastMessage(String.valueOf(database.executeQuery("SELECT * FROM PIPPO",rows)));
-        */
-
+        IrisManagaer.initialize();
+        this.getCommand("ticket").setExecutor(new listener());
+        this.getCommand("tk").setExecutor(new listener());
+        this.getCommand("ticket").setTabCompleter(new listener());
+        this.getCommand("tk").setTabCompleter(new listener());
     }
 
     @Override

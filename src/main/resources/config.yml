@@ -11,6 +11,11 @@ database:
     password: 'passwd'
     database: 'IrisTicket'
 
+categories:
+  - 'General color:6'   # Insert into color:<number> tag
+  - 'Report color:c'    # the color of the category
+  - 'Help color:3'
+
 permissions:
   admin:
     ticket-all-list: IrisTicket.admin
@@ -23,10 +28,68 @@ permissions:
     ticket-his-list: null
     ticket-his-comment: null
     ticket-his-close: null
+  max-opened-tickets: 1
 
 telegram:
-  useTelegram: true
+  useTelegram: false
   token: '2049667294:AAG6qudp4rsuAuDNZ0p4H624AIqY2hwdX4o'
+
+language:
+  list:
+    noticket: '&4No tickets found!'
+    header:
+      - '&8--------------------------------'
+      - '&2You are in the %page_actual% of %page_total% page'
+      - ''
+    footer:
+      - ''
+      - '&7Actions &8» %arrows%'
+      - '&8--------------------------------'
+    commentsamount: '&8(%commentamount% comments)'
+  ticket:
+    header:
+      - '&8---------- &7Ticket %id% &8----------'
+      - '&8• &aStatus &7» %status%'
+      - '&8• &7Author &7» &7%author%'
+      - '&8• &aCategory &7» %category%'
+      - '&8• &aDate &7» %date%'
+      - ''
+      - '&7Related comments'
+    comments: '&8| &7%author%&f: %text%'
+    footer:
+      - '&7Actions &8» %comment% %close%'
+      - '&8--------------------------------'
+    buttons:
+      comment: '&7[Comment]'
+      close: '&c[Close]'
+      open: '&a[Open]'
+    status:
+      opened: '&aOpened'
+      closed: '&cClosed'
+
+  selectcategory:
+    - ''
+    - '&8---------- &7Ticket &8----------'
+    - '&7Please, select the category!'
+    - ''
+    - '%categories%'
+    - '&8--------------------------------'
+
+  help:
+    - '&7Ticket help'
+    - '/tk <args>'
+
+  general:
+    createticket: '&aTicket %id% &acreated successfully!'
+    closeticket: '&aTicket %id% &aclosed successfully!'
+    openticket: '&aTicket %id% &aopened successfully!'
+    addcomment: '&aComment added successfully!'
+    tootickets: '&cYou have too many open tickets!'
+    nopermissions: '&cInsufficient permissions!'
+
+  arrows:
+    right: '->'
+    left: '<-'
 
 #configuration plugin
 #by Madacaos with heart <3

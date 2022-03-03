@@ -3,3 +3,8 @@ version: '${project.version}'
 main: it.iris.ticket.core.Core
 authors: [ autori ]
 description: descrizione
+commands:
+  tk:
+    usage: /tk
+  ticket:
+    usage: /ticket
